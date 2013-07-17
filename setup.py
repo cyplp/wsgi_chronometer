@@ -20,6 +20,7 @@ setup(name='wsgi_chronometer',
       zip_safe=False,
       install_requires=[
           'PasteDeploy',
+          "webob",
       ],
       entry_points="""
       # -*- Entry points: -*-

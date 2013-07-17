@@ -1,6 +1,7 @@
 import time
 import datetime
 
+from webob import Request
 
 def chronometer_filter_factory(app, global_conf, **kwargs):
     """
@@ -25,7 +26,9 @@ class ChronoFilter(object):
             
     def __call__(self, environ, start_response):
         begin = time.time()
-        result = self._app(environ, start_response)
+        req = Request(environ)
+        resp = req.get_response(self._app)
+        result = resp(environ, start_response)
         end = time.time()
         
         data = [str(datetime.datetime.now())]
@@ -35,7 +38,7 @@ class ChronoFilter(object):
             except KeyError:
                 data.append(' ')
                 
-        data.append(str((end- begin) * 1000))
+        data.append("%.02fms" % ((end- begin) * 1000))
         sep = " %s " % (self._sep)
         print sep.join(data)
         return result
