@@ -5,13 +5,32 @@ from webob import Request
 
 def chronometer_filter_factory(app, global_conf, **kwargs):
     """
+    Factory for pasteDeploy.
 
+    app is a wsgi app,
+    global_conf is a dictionnary containing __file__ and here,
+    kwargs are args in the parameters passed in the pastedeploy file conf.
+
+    return a ChronoFilter.
     """
+
     return ChronoFilter(app, **kwargs)
 
 
 class ChronoFilter(object):
+    """
+    Wsgi Middleware for mesuring time execution (and display other things).
+    """
     def __init__(self, app, **kwargs):
+        """
+        Constructor.
+
+        app wsgi to chronometer,
+        kwargs : conf for ChronoFilter :
+          - separator : string for separate fields in display (default: '-'),
+          - fields list of fields to display
+          .. TODO list fields.
+        """
         self._app = app
 
         if 'separator' in kwargs:
@@ -25,6 +44,9 @@ class ChronoFilter(object):
             self._fields = []
 
     def __call__(self, environ, start_response):
+        """
+        Call of the wsgi app.
+        """
         begin = time.time()
 
         req = Request(environ)
