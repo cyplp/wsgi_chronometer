@@ -36,7 +36,7 @@ class ChronoFilter(object):
         if 'separator' in kwargs:
             self._sep = kwargs['separator']
         else:
-            self._separator = '-'
+            self._sep = '-'
 
         if 'fields' in kwargs:
             self._fields = kwargs['fields'].split()
