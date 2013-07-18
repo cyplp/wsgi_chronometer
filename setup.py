@@ -7,7 +7,7 @@ version = '0.2.dev0'
 setup(name='wsgi_chronometer',
       version=version,
       description="Just a wsgi filter for mesure time execution",
-      long_description=open('README.rst'),
+      long_description=open('README.rst').read(),
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       keywords='wsgi time filter',
       author=u'Cyprien Le Pannérer',
