@@ -64,6 +64,7 @@ class TestChronoFilter(unittest.TestCase):
         def fakeStartResponse(status, headers):
             return []
 
+        # minimal environ for webob
         environ = {'REQUEST_METHOD': 'GET',
                    'PATH_INFO': '/',
                    'SERVER_PROTOCOL': 'HTTP',
