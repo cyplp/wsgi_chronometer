@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.2.dev0'
+version = '0.1.1'
 
 setup(name='wsgi_chronometer',
       version=version,
