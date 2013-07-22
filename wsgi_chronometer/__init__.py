@@ -68,7 +68,7 @@ class ChronoFilter(object):
             'REMOTE_ADDR': req.remote_addr,
             'wsgi.url_scheme': req.scheme,
             'SERVER_PORT': str(req.server_port),
-
+            'CLIENT_ADDR': req.client_addr,
             'HTTP_HOST': req.host,
 #            'wsgi.multithread': True, # TODO
             'HTTP_ACCEPT': str(req.accept),
